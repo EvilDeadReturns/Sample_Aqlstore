@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Sample_Aqlstore.MainPage">
+
+    <Grid RowDefinitions="Auto,Auto,*" Padding="16" RowSpacing="10">
+
+        <!-- Entry fields -->
+        <VerticalStackLayout Grid.Row="0" Spacing="10">
+            <Label Text="ID" FontAttributes="Bold" />
+            <Entry x:Name="IdEntry" IsReadOnly="True" TextColor="Gray" />
+
+            <Entry x:Name="NameEntry" Placeholder="Name" />
+            <Entry x:Name="AgeEntry" Placeholder="Age" Keyboard="Numeric" />
+            <Entry x:Name="CityEntry" Placeholder="City" />
+
+            <!-- Save/Edit/Delete Buttons -->
+            <HorizontalStackLayout Spacing="10">
+                <Button Text="Save" Clicked="OnSaveClicked" />
+                <Button Text="Edit" Clicked="OnSaveClicked" />
+                <Button Text="Delete" Clicked="OnDeleteClicked" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+
+        <!-- Generate / View / Download Buttons -->
+        <HorizontalStackLayout Grid.Row="1" Spacing="10">
+            <Button Text="Generate Test Data" Clicked="OnGenerateTestDataClicked"/>
+            <Button Text="AQL Store" Clicked="OnViewAqlClicked" />
+            <Button Text="Download AQL" 
+                    Clicked="OnDownloadAqlClicked"
+                    IsEnabled="{Binding Source={x:Reference IdEntry}, Path=Text.Length}" />
+        </HorizontalStackLayout>
+
+        <!-- Saved Entries CollectionView -->
+        <CollectionView Grid.Row="2"
+                        x:Name="ListView"
+                        SelectionMode="Single"
+                        SelectionChanged="OnSelectionChanged"
+                        ItemsLayout="VerticalList"
+                        VerticalOptions="FillAndExpand">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10" Margin="5" BackgroundColor="LightGray"  >
+                        <VerticalStackLayout>
+                            <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="16"/>
+                            <Label Text="{Binding Age}" FontSize="14"/>
+                            <Label Text="{Binding City}" FontSize="14"/>
+                        </VerticalStackLayout>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </Grid>
+</ContentPage>
