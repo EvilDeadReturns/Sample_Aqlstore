@@ -1,20 +1,9 @@
-﻿# Visual Studio / MAUI
-.vs/
-bin/
+﻿bin/
 obj/
-
-# MAUI platform outputs
-**/Platforms/Android/bin/
-**/Platforms/Android/obj/
-**/Platforms/iOS/bin/
-**/Platforms/iOS/obj/
-**/Platforms/Windows/bin/
-**/Platforms/Windows/obj/
-
-# User files
+.vs/
 *.user
 *.suo
-
-# OS files
-.DS_Store
-Thumbs.db
+*.cache
+*.log
+*.apk
+*.aab
